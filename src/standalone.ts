@@ -1,4 +1,4 @@
-import Prettier from "prettier/standalone";
+import Prettier from "prettier";
 import * as prettierPluginLatex from "./prettier-plugin-latex";
 
 /**
@@ -6,16 +6,16 @@ import * as prettierPluginLatex from "./prettier-plugin-latex";
  * the code.
  *
  * @export
- * @param {string} [source=""] - code to be formatted
- * @param {*} [options={}] - Prettier options object (you can set `printWidth` here)
- * @returns {string} formatted code
+ * @param [source=""] - code to be formatted
+ * @param [options={}] - Prettier options object (you can set `printWidth` here)
+ * @returns formatted code
  */
 export function printPrettier(source = "", options = {}) {
     return Prettier.format(source, {
         printWidth: 80,
         useTabs: true,
         ...options,
-        parser: "latex-parser" as any,
+        parser: "latex-parser",
         plugins: [prettierPluginLatex as any],
     });
 }

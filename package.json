@@ -1,7 +1,7 @@
 {
     "name": "prettier-plugin-latex",
     "description": "A Prettier plugin for formatting LaTeX source files",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "author": {
         "name": "Jason Siefken",
         "email": "siefkenj@gmail.com"
@@ -11,12 +11,14 @@
         "parser",
         "prettier"
     ],
-    "main": "build/prettier-plugin-latex.js",
+    "main": "dist/prettier-plugin-latex.js",
     "files": [
-        "build/prettier-plugin-latex.js",
-        "build/prettier-plugin-latex.js.map",
-        "build/standalone.js",
-        "build/standalone.js.map"
+        "dist/prettier-plugin-latex.js",
+        "dist/prettier-plugin-latex.js.map",
+        "dist/prettier-plugin-latex.d.ts",
+        "dist/standalone.js",
+        "dist/standalone.d.ts",
+        "dist/standalone.js.map"
     ],
     "scripts": {
         "test": "jest src/tests",
@@ -24,7 +26,7 @@
         "build": "mkdirp build; webpack"
     },
     "dependencies": {
-        "latex-ast-parser": "^0.5.2",
+        "latex-ast-parser": "^0.5.5",
         "prettier": "^2.3.1"
     },
     "devDependencies": {

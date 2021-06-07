@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
     entry: {
         standalone: "./src/standalone.ts",
-        "prettier-plugin-pegjs": "./src/prettier-plugin-latex.ts",
+        "prettier-plugin-latex": "./src/prettier-plugin-latex.ts",
     },
     mode: "development",
     devtool: "source-map",
@@ -30,7 +30,9 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
                 exclude: /node_modules/,
-                options: { compilerOptions: { outDir: "./dist" } },
+                options: {
+                    compilerOptions: { outDir: "./dist", sourceMap: true },
+                },
             },
         ],
     },
