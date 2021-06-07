@@ -1,6 +1,6 @@
-import Prettier from "prettier/standalone";
+import Prettier from "prettier";
 
-import * as prettierPluginLatex from "../prettier-plugin-latex";
+import prettierPluginLatex from "../prettier-plugin-latex";
 
 expect.extend({
     toFormatAs(inStr, outStr, formatter) {

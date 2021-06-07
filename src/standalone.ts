@@ -1,5 +1,5 @@
-import Prettier from "prettier";
-import * as prettierPluginLatex from "./prettier-plugin-latex";
+import Prettier from "./prettier-standalone";
+import prettierPluginLatex from "./prettier-plugin-latex";
 
 /**
  * Format `source` LaTeX code using Prettier to format/render
@@ -16,7 +16,7 @@ export function printPrettier(source = "", options = {}) {
         useTabs: true,
         ...options,
         parser: "latex-parser",
-        plugins: [prettierPluginLatex as any],
+        plugins: [prettierPluginLatex],
     });
 }
 
