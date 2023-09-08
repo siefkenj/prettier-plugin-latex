@@ -126,4 +126,4 @@ and the LaTeX plugin will load from the current directory.
 
 ### Code structure
 
-`prettier-plugin-latex` uses the [latex-ast-parser](https://github.com/siefkenj/latex-parser) library to parse the latex file and convert it to a prettier AST. This library is just a thin layer over `latex-ast-parser`
+`prettier-plugin-latex` uses the [@unified-latex/unified-latex-prettier](https://github.com/siefkenj/unified-latex) library to parse the latex file and convert it to a prettier AST. This library is just a thin layer over `latex-ast-parser`

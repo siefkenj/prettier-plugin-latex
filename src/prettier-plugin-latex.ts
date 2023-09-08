@@ -1,5 +1,4 @@
-import * as LatexParser from "latex-ast-parser";
-const prettierPluginLatex = LatexParser.prettierPluginLatex.default;
+import { prettierPluginLatex } from "@unified-latex/unified-latex-prettier";
 
 export const options = {};
 
@@ -7,4 +6,6 @@ export const defaultOptions = {
     useTabs: true,
 };
 
-export default { ...prettierPluginLatex, options };
+export const languages = prettierPluginLatex.languages;
+export const parsers = prettierPluginLatex.parsers;
+export const printers = prettierPluginLatex.printers;

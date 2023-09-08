@@ -3,9 +3,8 @@
         "outDir": "./dist/",
         "noImplicitAny": true,
         "strictNullChecks": true,
-        "module": "es6",
-        "target": "es5",
-        "jsx": "react",
+        "module": "ESNext",
+        "target": "ESNext",
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
@@ -14,6 +13,12 @@
         "declaration": true,
         "moduleResolution": "node"
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+    "include": ["src/**/*", "tests"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "vite.config.ts"
+    ]
 }

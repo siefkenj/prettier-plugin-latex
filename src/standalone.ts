@@ -1,5 +1,5 @@
-import Prettier from "./prettier-standalone";
-import prettierPluginLatex from "./prettier-plugin-latex";
+import { Prettier } from "./prettier-standalone";
+import * as prettierPluginLatex from "./prettier-plugin-latex";
 
 /**
  * Format `source` LaTeX code using Prettier to format/render
