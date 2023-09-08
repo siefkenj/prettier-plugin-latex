@@ -1,4 +1,4 @@
-import { Prettier } from "./prettier-standalone";
+import * as Prettier from "prettier/standalone";
 import * as prettierPluginLatex from "./prettier-plugin-latex";
 
 /**
@@ -10,8 +10,8 @@ import * as prettierPluginLatex from "./prettier-plugin-latex";
  * @param [options={}] - Prettier options object (you can set `printWidth` here)
  * @returns formatted code
  */
-export function printPrettier(source = "", options = {}) {
-    return Prettier.format(source, {
+export async function printPrettier(source = "", options = {}) {
+    return await Prettier.format(source, {
         printWidth: 80,
         useTabs: true,
         ...options,
