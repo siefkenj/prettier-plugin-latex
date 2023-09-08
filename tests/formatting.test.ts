@@ -4,13 +4,13 @@ import Prettier from "prettier";
 import * as prettierPluginLatex from "../src/prettier-plugin-latex";
 
 expect.extend({
-    toFormatAs(inStr, outStr, formatter) {
+    async toFormatAs(inStr, outStr, formatter) {
         if (typeof formatter !== "function") {
             throw new Error(
                 "Must pass in a formatting function as the second argument when using `toFormatAs`"
             );
         }
-        const formatted = formatter(inStr);
+        const formatted = await formatter(inStr);
 
         const pass = this.equals(formatted, outStr);
 
@@ -38,8 +38,8 @@ declare module "vitest" {
 
 /* eslint-env jest */
 
-describe("Prettier tests", () => {
-    it("prints latex code", () => {
+describe("Prettier tests", async () => {
+    it("prints latex code", async () => {
         const STRINGS = [
             { inStr: "$x^{21}$", outStr: "$x^{21}$" },
             {
@@ -86,7 +86,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("prints comments", () => {
+    it("prints comments", async () => {
         const STRINGS = [
             { inStr: "%", outStr: "%" },
             { inStr: "x%", outStr: "x%" },
@@ -144,7 +144,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("prints math environments", () => {
+    it("prints math environments", async () => {
         const STRINGS = [
             { inStr: "\\[x\\]", outStr: "\\[\n\tx\n\\]" },
             { inStr: "\\[\\]", outStr: "\\[\n\\]" },
@@ -178,7 +178,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("insert newlines around environments", () => {
+    it("insert newlines around environments", async () => {
         const STRINGS = [
             { inStr: "\\[\\] x", outStr: "\\[\n\\]\nx" },
             { inStr: "y \\[\\]", outStr: "y\n\\[\n\\]" },
@@ -225,7 +225,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("verb tests", () => {
+    it("verb tests", async () => {
         const STRINGS = [
             { inStr: "\\verb|%$\n|", outStr: "\\verb|%$\n|" },
             { inStr: "\\verb!{!", outStr: "\\verb!{!" },
@@ -248,7 +248,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("verbatim environments tests", () => {
+    it("verbatim environments tests", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{verbatim}\\end{verbatim}",
@@ -305,7 +305,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("comments at start of environments tests", () => {
+    it("comments at start of environments tests", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{a}\\end{a}",
@@ -371,7 +371,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("matrix environment tests", () => {
+    it("matrix environment tests", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{matrix}a\\end{matrix}",
@@ -444,7 +444,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("matrix environment with comments at start", () => {
+    it("matrix environment with comments at start", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{matrix}%xx\na\\end{matrix}",
@@ -477,7 +477,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("matrix environment alignment of cell items", () => {
+    it("matrix environment alignment of cell items", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{matrix}\na\\\\ b\\end{matrix}",
@@ -502,7 +502,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("comments at the end of an arguments list get a closing newline", () => {
+    it("comments at the end of an arguments list get a closing newline", async () => {
         const STRINGS = [
             {
                 inStr: "\\mathbb{x%matrix\n}",
@@ -523,7 +523,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("Formats aligned environments", () => {
+    it("Formats aligned environments",async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{align}ab& c\\\\d&eee\\end{align}",
@@ -544,7 +544,7 @@ describe("Prettier tests", () => {
         ];
 
         for (const { inStr, outStr } of STRINGS) {
-            const formatted = Prettier.format(inStr, {
+            const formatted = await Prettier.format(inStr, {
                 printWidth: 30,
                 useTabs: true,
                 parser: "latex-parser",
@@ -553,7 +553,7 @@ describe("Prettier tests", () => {
             expect(formatted).toEqual(outStr);
         }
     });
-    it("Allows indenting of `printRaw` content", () => {
+    it("Allows indenting of `printRaw` content", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{x}{%\n}\\end{x}",
@@ -562,7 +562,7 @@ describe("Prettier tests", () => {
         ];
 
         for (const { inStr, outStr } of STRINGS) {
-            const formatted = Prettier.format(inStr, {
+            const formatted = await Prettier.format(inStr, {
                 printWidth: 30,
                 useTabs: true,
                 parser: "latex-parser",
@@ -571,7 +571,7 @@ describe("Prettier tests", () => {
             expect(formatted).toEqual(outStr);
         }
     });
-    it("Linebreaks before and after \\section command", () => {
+    it("Linebreaks before and after \\section command", async () => {
         const STRINGS = [
             {
                 inStr: "\\section{x}",
@@ -632,7 +632,7 @@ describe("Prettier tests", () => {
         ];
 
         for (const { inStr, outStr } of STRINGS) {
-            const formatted = Prettier.format(inStr, {
+            const formatted = await Prettier.format(inStr, {
                 printWidth: 30,
                 useTabs: true,
                 parser: "latex-parser",
@@ -642,7 +642,7 @@ describe("Prettier tests", () => {
         }
     });
 
-    it("Formats matrix environments with optional arguments", () => {
+    it("Formats matrix environments with optional arguments", async () => {
         const STRINGS = [
             {
                 inStr: "\\begin{NiceArray}a&b&c\\end{NiceArray}",
@@ -667,7 +667,7 @@ describe("Prettier tests", () => {
         ];
 
         for (const { inStr, outStr } of STRINGS) {
-            const formatted = Prettier.format(inStr, {
+            const formatted = await Prettier.format(inStr, {
                 printWidth: 30,
                 useTabs: true,
                 parser: "latex-parser",
