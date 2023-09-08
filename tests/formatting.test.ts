@@ -1,6 +1,7 @@
+import { expect, describe, it } from "vitest";
 import Prettier from "prettier";
 
-import prettierPluginLatex from "../prettier-plugin-latex";
+import prettierPluginLatex from "../src/prettier-plugin-latex";
 
 expect.extend({
     toFormatAs(inStr, outStr, formatter) {
@@ -20,15 +21,20 @@ expect.extend({
                     inStr
                 )}\n\nthe output did ${
                     pass ? "" : "not"
-                } format correctly\n\n${this.utils.printDiffOrStringify(
-                    outStr,
-                    formatted,
-                    "Expected",
-                    "Received"
-                )}`,
+                } format correctly\n\nReceived:\n${this.utils.printExpected(
+                    outStr
+                )}\nExpected:\n${this.utils.printReceived(formatted)}`,
         };
     },
 });
+
+interface CustomMatchers<R = unknown> {
+    toFormatAs(expected: string, formatter: Function): R;
+}
+declare module "vitest" {
+    interface Assertion<T = any> extends CustomMatchers<T> {}
+    interface AsymmetricMatchersContaining extends CustomMatchers {}
+}
 
 /* eslint-env jest */
 
