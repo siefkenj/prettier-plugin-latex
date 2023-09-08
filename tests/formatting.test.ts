@@ -59,9 +59,9 @@ describe("Prettier tests", () => {
                     "\n" +
                     "\\begin{enumerate}\n" +
                     "\t\\item hi there this \\emph{is\n" +
-                    "\t\tstuff $\\mathbb{4}somegoodst\n" +
-                    "\t\tuff$ is really, really\n" +
-                    "\t\tgreat!}\n" +
+                    "\t\tstuff\n"+
+                    "\t\t$\\mathbb{4}somegoodstuff$\n" +
+                    "\t\tis really, really great!}\n" +
                     "\n" +
                     "\t\\item and other stuff\n" +
                     "\\end{enumerate}",
