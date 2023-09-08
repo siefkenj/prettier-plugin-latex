@@ -7,4 +7,8 @@ export const defaultOptions = {
     useTabs: true,
 };
 
-export default { ...prettierPluginLatex, options };
+export const languages = prettierPluginLatex.languages
+export const parsers = prettierPluginLatex.parsers
+export const printers = prettierPluginLatex.printers
+
+//export default { ...prettierPluginLatex };

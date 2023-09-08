@@ -1,7 +1,7 @@
 import { expect, describe, it } from "vitest";
 import Prettier from "prettier";
 
-import prettierPluginLatex from "../src/prettier-plugin-latex";
+import * as prettierPluginLatex from "../src/prettier-plugin-latex";
 
 expect.extend({
     toFormatAs(inStr, outStr, formatter) {
