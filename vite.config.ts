@@ -14,9 +14,9 @@ export default defineConfig({
         lib: {
             entry: {
                 "prettier-plugin-latex": "./src/prettier-plugin-latex.ts",
-                standalone: "./src/prettier-standalone.js",
+                standalone: "./src/standalone.ts",
             },
-            formats: ["cjs"],
+            formats: ["cjs", "es"],
         },
     },
     test: {

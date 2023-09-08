@@ -80,6 +80,9 @@ If you installed globally, run
 prettier path/to/file.tex --write
 ```
 
+**Node:** For Prettier v3, automatic plugin resolution was removed, so you must specify the directory of `prettier-plugin-latex`
+manually with the `--plugin=...` command line argument.
+
 ### In the Browser
 
 This package exposes a `standalone.js` that wraps prettier and exports a
@@ -111,12 +114,6 @@ npm run watch
 ```
 
 You can then execute Prettier with
-
-```
-prettier --plugin-search-dir=./ ...
-```
-
-or
 
 ```
 prettier --plugin=./dist/prettier-plugin-latex.js ...
